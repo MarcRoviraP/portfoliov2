@@ -10,9 +10,11 @@ dependencies:
   easy_localization: ^3.0.7+1
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^10.8.0
   get: ^4.7.2
   provider: ^6.1.5
   theme_provider: ^0.6.0
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
