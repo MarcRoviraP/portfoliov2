@@ -1,0 +1,16 @@
+{
+    "experiencia": [
+        {
+        "funcion": "Tecnico de sistemas",
+        "lugar": "Macrosoft",
+        "fecha": "Marzo 2023 - Junio 2023",
+        "descripcion": "Reparación de equipos (ordenadores, impresoras, etc) y técnico de redes."
+        },
+        {
+        "funcion": "Estudiante de DAM",
+        "lugar": "IES Sant Vicent Ferrer",
+        "fecha": "Septiembre 2023 - Febrero 2025",
+        "descripcion": "Actualmente estudio DAM en el IES Sant Vicent Ferrer de Algemesí."
+        }
+    ]
+}
