@@ -3,6 +3,7 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
+  static const Proyectwidget_project = 'Proyectwidget_project';
   static const homeScreen_about_me = 'homeScreen_about_me';
   static const homeScreen_contact = 'homeScreen_contact';
   static const homeScreen_contacto = 'homeScreen_contacto';

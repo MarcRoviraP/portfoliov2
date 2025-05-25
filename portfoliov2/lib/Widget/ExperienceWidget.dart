@@ -117,13 +117,14 @@ class _ExperiencewidgetState extends State<Experiencewidget> {
                   style: const TextStyle(fontWeight: FontWeight.bold)),
               if (date != null)
                 Text(date, style: const TextStyle(fontSize: 12)),
+              const SizedBox(height: 8),
+              Text(description,
+                  style: TextStyle(
+                      color: Theme.of(context).textTheme.bodySmall!.color)),
+              const SizedBox(height: 16),
             ],
           ),
         ),
-        Expanded(
-          flex: 5,
-          child: Text(description),
-        )
       ],
     );
   }
