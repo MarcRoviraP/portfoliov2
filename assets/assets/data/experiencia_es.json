@@ -11,6 +11,12 @@
         "lugar": "IES Sant Vicent Ferrer",
         "fecha": "Septiembre 2023 - Febrero 2025",
         "descripcion": "Actualmente estudio DAM en el IES Sant Vicent Ferrer de Algemesí."
+        },
+        {
+        "funcion": "Desarrollador de software",
+        "lugar": "Imagina ITS",
+        "fecha": "Febrero 2025 - Mayo 2025",
+        "descripcion": "He ayudado a desarrollar una aplicación de gestión de efectivo (ImaCash). Durante este periodo he aprendido a trabajar con C# con .NET 4 y SQL Server, así como a utilizar Git para el control de versiones con Gitea."
         }
     ]
 }
