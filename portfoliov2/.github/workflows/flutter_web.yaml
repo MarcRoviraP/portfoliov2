@@ -19,10 +19,13 @@ jobs:
         run: flutter config --enable-web
 
       - name: Install dependencies
-        run: flutter packages get
-
+        run: flutter pub get
+        working-directory: ./portfoliov2
+      
       - name: Build web app
         run: flutter build web
+        working-directory: ./portfoliov2
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
