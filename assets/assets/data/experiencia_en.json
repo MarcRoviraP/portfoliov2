@@ -1,5 +1,12 @@
 {
     "experiencia": [
+      
+      {
+        "funcion": "SMX Student",
+        "lugar": "IES Sant Vicent Ferrer",
+        "fecha": "September 2021 - February 2023",
+        "descripcion": "SMX student at IES Sant Vicent Ferrer in Algemesí."
+      },
       {
         "funcion": "Systems Technician",
         "lugar": "Macrosoft",
@@ -10,7 +17,7 @@
         "funcion": "DAM Student",
         "lugar": "IES Sant Vicent Ferrer",
         "fecha": "September 2023 - February 2025",
-        "descripcion": "I am currently studying DAM at IES Sant Vicent Ferrer in Algemesí."
+        "descripcion": "DAM student at IES Sant Vicent Ferrer in Algemesí."
       },
       {
       "funcion": "Desarrollador de software",

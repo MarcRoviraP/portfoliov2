@@ -1,6 +1,12 @@
 {
     "experiencia": [
         {
+        "funcion": "Estudiante de SMX",
+        "lugar": "IES Sant Vicent Ferrer",
+        "fecha": "Septiembre 2021 - Febrero 2023",
+        "descripcion": "Estudiante de SMX en el IES Sant Vicent Ferrer de Algemesí."
+        },
+        {
         "funcion": "Tecnico de sistemas",
         "lugar": "Macrosoft",
         "fecha": "Marzo 2023 - Junio 2023",
@@ -10,7 +16,7 @@
         "funcion": "Estudiante de DAM",
         "lugar": "IES Sant Vicent Ferrer",
         "fecha": "Septiembre 2023 - Febrero 2025",
-        "descripcion": "Actualmente estudio DAM en el IES Sant Vicent Ferrer de Algemesí."
+        "descripcion": "Estudiante de DAM en el IES Sant Vicent Ferrer de Algemesí."
         },
         {
         "funcion": "Desarrollador de software",

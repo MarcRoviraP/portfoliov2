@@ -1,11 +1,46 @@
 {
-    "proyecto": [
-      {
-        "imagen": "hundir_la_flota.png",
-        "titulo": "Hundir La Flota",
-        "descripcion": "Juego de Hundir La Flota. Creado con JAVA por terminal. Juego de 1 jugador contra la máquina.",
-        "link" : "https://github.com/MarcRoviraP/HundirLaFlotaJava"
-        }
-    ]
-  }
-  
+  "project": [
+    {
+      "image": "hundir_la_flota.png",
+      "title": "Hundir La Flota",
+      "description": "Battleship game created in JAVA for the terminal. Single-player mode against the machine.",
+      "link": "https://github.com/MarcRoviraP/HundirLaFlotaJava"
+    },
+    {
+      "image": "blackjack.png",
+      "title": "Blackjack",
+      "description": "Blackjack game created in JAVA for the terminal. Supports multiplayer mode. Players can compete against the machine or each other.",
+      "link": "https://github.com/MarcRoviraP/chess"
+    },
+    {
+      "image": "calculator.png",
+      "title": "Calculator",
+      "description": "Calculator built using JavaFX.",
+      "link": "https://github.com/MarcRoviraP/calculator/"
+    },
+    {
+      "image": "chess.png",
+      "title": "Chess",
+      "description": "A Java-based chess game using JavaFX for the graphical interface and PostgreSQL for data storage.",
+      "link": "https://github.com/MarcRoviraP/chess"
+    },
+    {
+      "image": "spaceinvaders.png",
+      "title": "Space Invaders",
+      "description": "Single-player game created with Python and Pygame. Features a 'Moros i Cristians' theme.",
+      "link": "https://github.com/MarcRoviraP/Space_Invaders/"
+    },
+    {
+      "image": "shoptogether.png",
+      "title": "Shop Together",
+      "description": "Mobile app for creating cooperative shopping lists. Built with Kotlin. Uses Firebase for backend and data storage.",
+      "link": "https://github.com/MarcRoviraP/ShopTogether"
+    },
+    {
+      "image": "mybusiness.png",
+      "title": "My Business",
+      "description": "Mobile business management app. Built with Dart and Flutter. Uses Supabase for backend and data storage.",
+      "link": "https://github.com/MarcRoviraP/MyBusiness"
+    }
+  ]
+}
