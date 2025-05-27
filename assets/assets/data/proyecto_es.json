@@ -15,7 +15,7 @@
     {
       "imagen": "calculator.png",
       "titulo": "Calculator",
-      "descripcion": "Calculadora hecha con JavaFX.",
+      "descripcion": "Calculadora hecha con JavaFX para la interfaz gráfica. Soporta operaciones aritméticas básicas y un historial de cálculos.",
       "link": "https://github.com/MarcRoviraP/calculator/"
     },
     {

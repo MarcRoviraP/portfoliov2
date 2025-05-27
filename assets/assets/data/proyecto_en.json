@@ -1,45 +1,45 @@
 {
-  "project": [
+  "proyecto": [
     {
-      "image": "hundir_la_flota.png",
-      "title": "Hundir La Flota",
-      "description": "Battleship game created in JAVA for the terminal. Single-player mode against the machine.",
+      "imagen": "hundir_la_flota.png",
+      "titulo": "Hundir La Flota",
+      "descripcion": "Battleship game created in JAVA for the terminal. Single-player mode against the machine.",
       "link": "https://github.com/MarcRoviraP/HundirLaFlotaJava"
     },
     {
-      "image": "blackjack.png",
-      "title": "Blackjack",
-      "description": "Blackjack game created in JAVA for the terminal. Supports multiplayer mode. Players can compete against the machine or each other.",
+      "imagen": "blackjack.png",
+      "titulo": "Blackjack",
+      "descripcion": "Blackjack game created in JAVA for the terminal. Supports multiplayer mode. Players can compete against the machine or each other.",
       "link": "https://github.com/MarcRoviraP/chess"
     },
     {
-      "image": "calculator.png",
-      "title": "Calculator",
-      "description": "Calculator built using JavaFX.",
+      "imagen": "calculator.png",
+      "titulo": "Calculator",
+      "descripcion": "Calculator built using JavaFX for the graphical interface. Supports basic arithmetic operations and history of calculations.",
       "link": "https://github.com/MarcRoviraP/calculator/"
     },
     {
-      "image": "chess.png",
-      "title": "Chess",
-      "description": "A Java-based chess game using JavaFX for the graphical interface and PostgreSQL for data storage.",
+      "imagen": "chess.png",
+      "titulo": "Chess",
+      "descripcion": "A Java-based chess game using JavaFX for the graphical interface and PostgreSQL for data storage.",
       "link": "https://github.com/MarcRoviraP/chess"
     },
     {
-      "image": "spaceinvaders.png",
-      "title": "Space Invaders",
-      "description": "Single-player game created with Python and Pygame. Features a 'Moros i Cristians' theme.",
+      "imagen": "spaceinvaders.png",
+      "titulo": "Space Invaders",
+      "descripcion": "Single-player game created with Python and Pygame. Features a 'Moros i Cristians' theme.",
       "link": "https://github.com/MarcRoviraP/Space_Invaders/"
     },
     {
-      "image": "shoptogether.png",
-      "title": "Shop Together",
-      "description": "Mobile app for creating cooperative shopping lists. Built with Kotlin. Uses Firebase for backend and data storage.",
+      "imagen": "shoptogether.png",
+      "titulo": "Shop Together",
+      "descripcion": "Mobile app for creating cooperative shopping lists. Built with Kotlin. Uses Firebase for backend and data storage.",
       "link": "https://github.com/MarcRoviraP/ShopTogether"
     },
     {
-      "image": "mybusiness.png",
-      "title": "My Business",
-      "description": "Mobile business management app. Built with Dart and Flutter. Uses Supabase for backend and data storage.",
+      "imagen": "mybusiness.png",
+      "titulo": "My Business",
+      "descripcion": "Mobile business management app. Built with Dart and Flutter. Uses Supabase for backend and data storage.",
       "link": "https://github.com/MarcRoviraP/MyBusiness"
     }
   ]
