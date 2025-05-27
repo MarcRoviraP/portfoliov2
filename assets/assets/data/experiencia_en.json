@@ -1,30 +1,28 @@
 {
-    "experiencia": [
-      
-      {
-        "funcion": "SMX Student",
-        "lugar": "IES Sant Vicent Ferrer",
-        "fecha": "September 2021 - February 2023",
-        "descripcion": "SMX student at IES Sant Vicent Ferrer in Algemesí."
-      },
-      {
-        "funcion": "Systems Technician",
-        "lugar": "Macrosoft",
-        "fecha": "March 2023 - June 2023",
-        "descripcion": "Repair of equipment (computers, printers, etc.) and network technician."
-      },
-      {
-        "funcion": "DAM Student",
-        "lugar": "IES Sant Vicent Ferrer",
-        "fecha": "September 2023 - February 2025",
-        "descripcion": "DAM student at IES Sant Vicent Ferrer in Algemesí."
-      },
-      {
-      "funcion": "Desarrollador de software",
+  "experiencia": [
+    {
+      "funcion": "SMX Student",
+      "lugar": "IES Sant Vicent Ferrer",
+      "fecha": "September 2021 - February 2023",
+      "descripcion": "SMX student at IES Sant Vicent Ferrer in Algemesí."
+    },
+    {
+      "funcion": "Systems Technician",
+      "lugar": "Macrosoft",
+      "fecha": "March 2023 - June 2023",
+      "descripcion": "Repair of equipment (computers, printers, etc.) and network technician."
+    },
+    {
+      "funcion": "DAM Student",
+      "lugar": "IES Sant Vicent Ferrer",
+      "fecha": "September 2023 - February 2025",
+      "descripcion": "DAM student at IES Sant Vicent Ferrer in Algemesí."
+    },
+    {
+      "funcion": "Software Developer",
       "lugar": "Imagina ITS",
-      "fecha": "Febrero 2025 - Mayo 2025",
-      "descripcion": "He ayudado a desarrollar una aplicación de gestión de efectivo (ImaCash). Durante este periodo he aprendido a trabajar con C# con .NET 4 y SQL Server, así como a utilizar Git para el control de versiones con Gitea."
-      }
-    ]
-  }
-  
+      "fecha": "February 2025 - May 2025",
+      "descripcion": "I helped develop a cash management application (ImaCash). During this period, I learned to work with C# and .NET 4, SQL Server, and version control using Git with Gitea."
+    }
+  ]
+}
