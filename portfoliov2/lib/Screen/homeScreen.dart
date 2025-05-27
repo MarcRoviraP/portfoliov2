@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get.dart';
 import 'package:portfoliov2/Widget/AnimatedButton.dart';
 import 'package:portfoliov2/Widget/ExperienceWidget.dart';
 import 'package:portfoliov2/Widget/Proyectwidget.dart';
@@ -37,109 +36,59 @@ class _HomescreenState extends State<Homescreen> {
     idioma = Localizations.localeOf(context).languageCode;
     final yellow = Colors.yellow[700];
     final backColor = Theme.of(context).canvasColor;
-    const IconData linkedin_squared = IconData(0xf30c);
 
-    Icon modeNightIcon = Icon(
-        themeController.isDarkMode.value ? Icons.mode_night : Icons.light_mode,
-        color: themeController.isDarkMode.value
-            ? const Color.fromARGB(255, 233, 229, 229)
-            : Colors.black);
     return Scaffold(
       backgroundColor: backColor,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.15, vertical: 50),
+            horizontal: MediaQuery.of(context).size.width * 0.05, vertical: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Scrollable.ensureVisible(
-                          experienceKey.currentContext!,
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          currentIndex = value ? 1 : 0;
-                        });
-                      },
-                      child: Text(LocaleKeys.homeScreen_experiencia.tr(),
-                          style: TextStyle(
-                              color:
-                                  currentIndex == 1 ? yellow : Colors.blue))),
-                  SizedBox(width: 15),
-                  TextButton(
-                      onPressed: () {},
-                      onHover: (value) {
-                        setState(() {
-                          currentIndex = value ? 2 : 0;
-                        });
-                      },
-                      child: Text(LocaleKeys.homeScreen_proyectos.tr(),
-                          style: TextStyle(
-                              color:
-                                  currentIndex == 2 ? yellow : Colors.blue))),
-                  SizedBox(width: 15),
-                  TextButton(
-                      onPressed: () {},
-                      onHover: (value) {
-                        setState(() {
-                          currentIndex = value ? 3 : 0;
-                        });
-                      },
-                      child: Text(LocaleKeys.homeScreen_about_me.tr(),
-                          style: TextStyle(
-                              color:
-                                  currentIndex == 3 ? yellow : Colors.blue))),
-                  SizedBox(width: 15),
-                  TextButton(
-                      onPressed: () {},
-                      onHover: (value) {
-                        setState(() {
-                          currentIndex = value ? 4 : 0;
-                        });
-                      },
-                      child: Text(LocaleKeys.homeScreen_contacto.tr(),
-                          style: TextStyle(
-                              color:
-                                  currentIndex == 4 ? yellow : Colors.blue))),
-                  SizedBox(width: 15),
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          themeController.toggleDarkMode();
-                        });
-                      },
-                      icon: modeNightIcon,
-                      iconSize: 30),
-                ],
-              ),
+            ResponsiveAppBar(
+              currentIndex: currentIndex,
+              onTap: (index) {
+                if (index == 99) {
+                  setState(() => themeController.toggleDarkMode());
+                  return;
+                }
+
+                setState(() => currentIndex = index);
+
+                final sectionKey = [
+                  experienceKey,
+                ][index];
+
+                if (sectionKey.currentContext != null) {
+                  Scrollable.ensureVisible(
+                    sectionKey.currentContext!,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                }
+              },
+              onThemeToggle: () {
+                setState(() => themeController.toggleDarkMode());
+              },
+              isDarkMode: themeController.isDarkMode.value,
             ),
-            SizedBox(height: 60),
-            // Header + badge + buttons
+            const SizedBox(height: 60),
             LayoutBuilder(
               builder: (context, constraints) {
-                double maxWidth = constraints.maxWidth;
-
                 return Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 20,
                   runSpacing: 20,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 40,
                       backgroundImage: NetworkImage(""),
                     ),
                     Animatedbutton(
-                      text: LocaleKeys.homeScreen_disponible_trabajar.tr(),
+                      text: StringTranslateExtension(
+                              LocaleKeys.homeScreen_disponible_trabajar)
+                          .tr(),
                       url:
                           'https://www.linkedin.com/in/marc-rovira-perell%C3%B3-823424150/',
                     ),
@@ -147,33 +96,38 @@ class _HomescreenState extends State<Homescreen> {
                 );
               },
             ),
-
+            const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  LocaleKeys.homeScreen_hey_soy_marc.tr(),
-                  style: TextStyle(
+                  StringTranslateExtension(LocaleKeys.homeScreen_hey_soy_marc)
+                      .tr(),
+                  style: const TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 6),
+                const SizedBox(height: 6),
                 RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: LocaleKeys.homeScreen_dam.tr(),
+                        text:
+                            StringTranslateExtension(LocaleKeys.homeScreen_dam)
+                                .tr(),
                         style: TextStyle(
                             color: yellow,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
-                      WidgetSpan(
+                      const WidgetSpan(
                         child: SizedBox(width: 5),
                       ),
                       TextSpan(
-                        text: LocaleKeys.homeScreen_ubicacion.tr(),
+                        text: StringTranslateExtension(
+                                LocaleKeys.homeScreen_ubicacion)
+                            .tr(),
                         style: TextStyle(
                             color: Theme.of(context).textTheme.bodySmall!.color,
                             fontSize: 16),
@@ -181,18 +135,20 @@ class _HomescreenState extends State<Homescreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Wrap(
                   spacing: 15,
                   runSpacing: 15,
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.solidAddressCard),
-                      label: Text(LocaleKeys.homeScreen_contact.tr()),
+                      icon: const Icon(FontAwesomeIcons.solidAddressCard),
+                      label: Text(StringTranslateExtension(
+                              LocaleKeys.homeScreen_contact)
+                          .tr()),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
-                        side: BorderSide(color: Colors.yellow),
+                        side: const BorderSide(color: Colors.yellow),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -200,11 +156,13 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                     ElevatedButton.icon(
                       onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.linkedin),
-                      label: Text(LocaleKeys.homeScreen_linkedin.tr()),
+                      icon: const Icon(FontAwesomeIcons.linkedin),
+                      label: Text(StringTranslateExtension(
+                              LocaleKeys.homeScreen_linkedin)
+                          .tr()),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
-                        side: BorderSide(color: Colors.yellow),
+                        side: const BorderSide(color: Colors.yellow),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -214,21 +172,90 @@ class _HomescreenState extends State<Homescreen> {
                 ),
               ],
             ),
-
-            SizedBox(height: 80),
-            // Experiencia Section
-            Container(
-              key: experienceKey,
-            ),
-            Experiencewidget(
-              idioma: idioma,
-            ),
-            SizedBox(height: 80),
-            // Proyectos Section
+            const SizedBox(height: 80),
+            Container(key: experienceKey),
+            Experiencewidget(idioma: idioma),
+            const SizedBox(height: 80),
             ProyectWidget(idioma: idioma),
           ],
         ),
       ),
     );
+  }
+}
+
+class ResponsiveAppBar extends StatelessWidget {
+  final int currentIndex;
+  final void Function(int) onTap;
+  final VoidCallback onThemeToggle;
+  final bool isDarkMode;
+
+  const ResponsiveAppBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+    required this.onThemeToggle,
+    required this.isDarkMode,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final yellow = Colors.yellow[700];
+    final items = [
+      StringTranslateExtension(LocaleKeys.homeScreen_experiencia).tr(),
+      StringTranslateExtension(LocaleKeys.homeScreen_proyectos).tr(),
+      StringTranslateExtension(LocaleKeys.homeScreen_about_me).tr(),
+      StringTranslateExtension(LocaleKeys.homeScreen_contacto).tr(),
+    ];
+
+    if (MediaQuery.of(context).size.width > 800) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (int i = 0; i < items.length; i++)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: TextButton(
+                onPressed: () => onTap(i),
+                child: Text(
+                  items[i],
+                  style: TextStyle(
+                    color: currentIndex == i ? yellow : Colors.blue,
+                  ),
+                ),
+              ),
+            ),
+          IconButton(
+            onPressed: onThemeToggle,
+            icon: Icon(isDarkMode ? Icons.mode_night : Icons.light_mode),
+          ),
+        ],
+      );
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Marc Rovira', style: Theme.of(context).textTheme.titleLarge),
+          PopupMenuButton<int>(
+            onSelected: onTap,
+            itemBuilder: (context) => [
+              for (int i = 0; i < items.length; i++)
+                PopupMenuItem<int>(value: i, child: Text(items[i])),
+              const PopupMenuDivider(),
+              PopupMenuItem<int>(
+                value: 99,
+                child: Row(
+                  children: [
+                    Icon(isDarkMode ? Icons.light_mode : Icons.mode_night),
+                    const SizedBox(width: 8),
+                    const Text("Tema"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    }
   }
 }

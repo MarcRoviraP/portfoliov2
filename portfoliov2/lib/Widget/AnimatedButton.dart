@@ -2,7 +2,6 @@ import 'dart:html' as html;
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:portfoliov2/utils/utils.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Animatedbutton extends StatefulWidget {
   final String text;
@@ -18,13 +17,15 @@ class _AnimatedbuttonState extends State<Animatedbutton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _pulseAnimation;
-  Color baseColor = const Color.fromARGB(255, 48, 119, 226);
+  late bool _hovering;
+
+  final Random _random = Random();
 
   @override
   void initState() {
     super.initState();
+    _hovering = false;
 
-    // Controlador del efecto de latido
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
@@ -33,12 +34,10 @@ class _AnimatedbuttonState extends State<Animatedbutton>
           _controller.reverse();
         } else if (status == AnimationStatus.dismissed) {
           _controller.forward();
-          // Opcional: cambia de color base en cada pulso
-          baseColor = _getRandomColor();
         }
       });
 
-    _pulseAnimation = Tween<double>(begin: 0.4, end: 1.0).animate(
+    _pulseAnimation = Tween<double>(begin: 1.0, end: 1.05).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
@@ -51,39 +50,68 @@ class _AnimatedbuttonState extends State<Animatedbutton>
     super.dispose();
   }
 
-  Color _getRandomColor() {
-    final random = Random();
-    return Color.fromARGB(
-      128, // Opacidad total
-      0, // Rojo = 0 para eliminar tonos cálidos
-      random.nextInt(20), // Verde
-      100 + random.nextInt(156), // Azul
+  LinearGradient _getDynamicGradient() {
+    final blueShade = 100 + _random.nextInt(155);
+    return LinearGradient(
+      colors: [
+        Color.fromARGB(255, 30, 144, blueShade),
+        Color.fromARGB(255, 0, 80, 255),
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        newDeployURL(widget.url);
-      },
-      child: AnimatedBuilder(
-        animation: _pulseAnimation,
-        builder: (context, child) {
-          // Modifica la opacidad (intensidad) del borde
-          final color = baseColor.withOpacity(_pulseAnimation.value);
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: color, width: 2),
-              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
-            ),
-            child: Text(
-              widget.text,
-            ),
-          );
-        },
+    final baseShadowColor = Colors.blueAccent.withOpacity(0.6);
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => newDeployURL(widget.url),
+        child: AnimatedBuilder(
+          animation: _pulseAnimation,
+          builder: (context, child) {
+            final scale = _hovering ? _pulseAnimation.value : 1.0;
+
+            return Transform.scale(
+              scale: scale,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  gradient: _getDynamicGradient(),
+                  boxShadow: [
+                    BoxShadow(
+                      color: baseShadowColor,
+                      blurRadius: _hovering ? 20 : 10,
+                      spreadRadius: _hovering ? 2 : 1,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.3),
+                    width: 1.2,
+                  ),
+                  color: Colors.white.withOpacity(0.1),
+                  backgroundBlendMode: BlendMode.overlay,
+                ),
+                child: Text(
+                  widget.text.toUpperCase(),
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Colors.white,
+                        letterSpacing: 1.2,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
