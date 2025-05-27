@@ -60,6 +60,7 @@ class _ProyectWidgetState extends State<ProyectWidget> {
               ),
               const SizedBox(height: 30),
               Column(
+                
                 children: futureProjects
                     .map(
                       (exp) => _buildProject(
@@ -84,7 +85,6 @@ class _ProyectWidgetState extends State<ProyectWidget> {
     String description,
     String link,
   ) {
-    Color dotColor = Colors.yellow;
     bool isHovered = false;
 
     return Padding(
@@ -101,9 +101,9 @@ class _ProyectWidgetState extends State<ProyectWidget> {
               return StatefulBuilder(
                 builder: (context, setInnerState) {
                   return Wrap(
+                    alignment: WrapAlignment.start,
                     spacing: 20,
                     runSpacing: 20,
-                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       MouseRegion(
                         onEnter: (_) => setInnerState(() => isHovered = true),

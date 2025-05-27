@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:portfoliov2/Dialog/PresentationDialog.dart';
+import 'package:portfoliov2/Widget/AboutMe.dart';
 import 'package:portfoliov2/Widget/AnimatedButton.dart';
 import 'package:portfoliov2/Widget/ExperienceWidget.dart';
 import 'package:portfoliov2/Widget/Proyectwidget.dart';
@@ -19,6 +21,9 @@ class _HomescreenState extends State<Homescreen> {
   int currentIndex = 0;
   final themeController = Get.find<ThemeControllerC>();
   final experienceKey = GlobalKey();
+  final projectsKey = GlobalKey();
+  final aboutMeKey = GlobalKey();
+
   late String idioma;
 
   @override
@@ -58,6 +63,8 @@ class _HomescreenState extends State<Homescreen> {
 
                 final sectionKey = [
                   experienceKey,
+                  projectsKey,
+                  aboutMeKey,
                 ][index];
 
                 if (sectionKey.currentContext != null) {
@@ -81,9 +88,9 @@ class _HomescreenState extends State<Homescreen> {
                   spacing: 20,
                   runSpacing: 20,
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 40,
-                      backgroundImage: NetworkImage(""),
+                      backgroundImage: Image.asset('assets/img/marc.png').image,
                     ),
                     Animatedbutton(
                       text: StringTranslateExtension(
@@ -141,7 +148,17 @@ class _HomescreenState extends State<Homescreen> {
                   runSpacing: 15,
                   children: [
                     ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+  context: context,
+  builder: (_) => const Dialog(
+    backgroundColor: Colors.transparent,
+    insetPadding: EdgeInsets.all(20),
+    child: PresentationDialog(),
+  ),
+);
+
+                      },
                       icon: const Icon(FontAwesomeIcons.solidAddressCard),
                       label: Text(StringTranslateExtension(
                               LocaleKeys.homeScreen_contact)
@@ -155,7 +172,10 @@ class _HomescreenState extends State<Homescreen> {
                       ),
                     ),
                     ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        newDeployURL(
+                            "https://www.linkedin.com/in/marc-rovira-perell%C3%B3-823424150/");
+                      },
                       icon: const Icon(FontAwesomeIcons.linkedin),
                       label: Text(StringTranslateExtension(
                               LocaleKeys.homeScreen_linkedin)
@@ -176,7 +196,11 @@ class _HomescreenState extends State<Homescreen> {
             Container(key: experienceKey),
             Experiencewidget(idioma: idioma),
             const SizedBox(height: 80),
+            Container(key: projectsKey),
             ProyectWidget(idioma: idioma),
+            const SizedBox(height: 80),
+            Container(key: aboutMeKey),
+            Aboutme()
           ],
         ),
       ),
@@ -184,7 +208,7 @@ class _HomescreenState extends State<Homescreen> {
   }
 }
 
-class ResponsiveAppBar extends StatelessWidget {
+class ResponsiveAppBar extends StatefulWidget {
   final int currentIndex;
   final void Function(int) onTap;
   final VoidCallback onThemeToggle;
@@ -198,6 +222,12 @@ class ResponsiveAppBar extends StatelessWidget {
     required this.isDarkMode,
   });
 
+  @override
+  State<ResponsiveAppBar> createState() => _ResponsiveAppBarState();
+}
+
+class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
+  int index = -1;
   @override
   Widget build(BuildContext context) {
     final yellow = Colors.yellow[700];
@@ -216,18 +246,23 @@ class ResponsiveAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: TextButton(
-                onPressed: () => onTap(i),
+                onHover: (value) {
+                  setState(() {
+                    index = value ? i : -1;
+                  });
+                },
+                onPressed: () => widget.onTap(i),
                 child: Text(
                   items[i],
                   style: TextStyle(
-                    color: currentIndex == i ? yellow : Colors.blue,
+                    color: index == i ? yellow : Colors.blue,
                   ),
                 ),
               ),
             ),
           IconButton(
-            onPressed: onThemeToggle,
-            icon: Icon(isDarkMode ? Icons.mode_night : Icons.light_mode),
+            onPressed: widget.onThemeToggle,
+            icon: Icon(widget.isDarkMode ? Icons.mode_night : Icons.light_mode),
           ),
         ],
       );
@@ -237,7 +272,7 @@ class ResponsiveAppBar extends StatelessWidget {
         children: [
           Text('Marc Rovira', style: Theme.of(context).textTheme.titleLarge),
           PopupMenuButton<int>(
-            onSelected: onTap,
+            onSelected: widget.onTap,
             itemBuilder: (context) => [
               for (int i = 0; i < items.length; i++)
                 PopupMenuItem<int>(value: i, child: Text(items[i])),
@@ -246,9 +281,12 @@ class ResponsiveAppBar extends StatelessWidget {
                 value: 99,
                 child: Row(
                   children: [
-                    Icon(isDarkMode ? Icons.light_mode : Icons.mode_night),
+                    Icon(widget.isDarkMode
+                        ? Icons.light_mode
+                        : Icons.mode_night),
                     const SizedBox(width: 8),
-                    const Text("Tema"),
+                    Text(StringTranslateExtension(LocaleKeys.homeScreen_Tema)
+                        .tr()),
                   ],
                 ),
               ),
