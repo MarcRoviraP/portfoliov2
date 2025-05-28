@@ -43,7 +43,7 @@ class _ProyectWidgetState extends State<ProyectWidget> {
       future: cargarProyectos(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Center(child: Text('Error loading data'));
+          return const Center(child: SelectableText('Error loading data'));
         } else {
           return Column(
             children: [
@@ -51,7 +51,7 @@ class _ProyectWidgetState extends State<ProyectWidget> {
                 children: [
                   const Icon(Icons.code, color: Colors.yellow, size: 28),
                   const SizedBox(width: 8),
-                  Text(
+                  SelectableText(
                     LocaleKeys.Proyectwidget_project.tr(),
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold),
@@ -60,7 +60,6 @@ class _ProyectWidgetState extends State<ProyectWidget> {
               ),
               const SizedBox(height: 30),
               Column(
-                
                 children: futureProjects
                     .map(
                       (exp) => _buildProject(
@@ -128,13 +127,13 @@ class _ProyectWidgetState extends State<ProyectWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            SelectableText(
                               title,
                               style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 10),
-                            Text(
+                            SelectableText(
                               description,
                               style: TextStyle(color: Colors.grey[700]),
                             ),

@@ -26,77 +26,85 @@ class _PresentationDialogState extends State<PresentationDialog> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Row(
+          child: Stack(
             children: [
-              // Imagen de fondo a la izquierda
-              Expanded(
-                flex: 2,
-                child: Image.asset(
-                  'assets/img/background_card.png',
-                  fit: BoxFit.cover,
-                  height: double.infinity,
+              // Imagen de fondo (alineada a la izquierda)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SizedBox(
+                  width: containerWidth,
+                  height: containerHeight,
+                  child: Image.asset(
+                    'assets/img/background_card.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
 
-              // Card con info a la derecha
-              Expanded(
-                flex: 3,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 24.0, horizontal: 32.0),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primaryContainer
-                          .withAlpha(230),
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+              // Card con info (alineada a la derecha)
+              Align(
+                alignment: Alignment.centerRight,
+                child: SizedBox(
+                  width: containerWidth * 0.6, // Ancho del contenedor de texto
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 24.0, horizontal: 8.0),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primaryContainer
+                            .withAlpha(230),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Marc Rovira Perelló",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Marc Rovira Perelló",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          LocaleKeys.PresentationDialog_dam.tr(),
-                          style: const TextStyle(
-                            fontSize: 16,
+                          const SizedBox(height: 10),
+                          Text(
+                            LocaleKeys.PresentationDialog_dam.tr(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        TextButton.icon(
-                          onPressed: () {
-                            _launchPhone();
-                          },
-                          icon: const Icon(Icons.phone, size: 20),
-                          label: Text(LocaleKeys.PresentationDialog_phone.tr()),
-                        ),
-                        TextButton.icon(
-                          onPressed: () {
-                            _launchEmail();
-                          },
-                          icon: const Icon(Icons.mail_outline, size: 20),
-                          label: Text(LocaleKeys.PresentationDialog_mail.tr()),
-                        ),
-                      ],
+                          const SizedBox(height: 20),
+                          TextButton.icon(
+                            onPressed: () {
+                              _launchPhone();
+                            },
+                            icon: const Icon(Icons.phone, size: 20),
+                            label:
+                                Text(LocaleKeys.PresentationDialog_phone.tr()),
+                          ),
+                          TextButton.icon(
+                            onPressed: () {
+                              _launchEmail();
+                            },
+                            icon: const Icon(Icons.mail_outline, size: 20),
+                            label:
+                                Text(LocaleKeys.PresentationDialog_mail.tr()),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

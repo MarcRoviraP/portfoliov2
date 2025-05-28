@@ -41,7 +41,7 @@ class _ExperiencewidgetState extends State<Experiencewidget> {
       future: cargarExperiencias(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Center(child: Text('Error loading data'));
+          return const Center(child: SelectableText('Error loading data'));
         } else {
           return Column(
             children: [
@@ -50,7 +50,7 @@ class _ExperiencewidgetState extends State<Experiencewidget> {
                   const Icon(Icons.work_outline,
                       color: Colors.yellow, size: 28),
                   const SizedBox(width: 8),
-                  Text(
+                  SelectableText(
                     LocaleKeys.homeScreen_experiencia.tr(),
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold),
@@ -110,15 +110,15 @@ class _ExperiencewidgetState extends State<Experiencewidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title,
+              SelectableText(title,
                   style:
                       TextStyle(color: dotColor, fontWeight: FontWeight.bold)),
-              Text(subtitle,
+              SelectableText(subtitle,
                   style: const TextStyle(fontWeight: FontWeight.bold)),
               if (date != null)
-                Text(date, style: const TextStyle(fontSize: 12)),
+                SelectableText(date, style: const TextStyle(fontSize: 12)),
               const SizedBox(height: 8),
-              Text(description,
+              SelectableText(description,
                   style: TextStyle(
                       color: Theme.of(context).textTheme.bodySmall!.color)),
               const SizedBox(height: 16),

@@ -58,6 +58,10 @@ class _HomescreenState extends State<Homescreen> {
                   setState(() => themeController.toggleDarkMode());
                   return;
                 }
+                if (index == 3) {
+                  showPresentationCard(context);
+                  return;
+                }
 
                 setState(() => currentIndex = index);
 
@@ -107,7 +111,7 @@ class _HomescreenState extends State<Homescreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   StringTranslateExtension(LocaleKeys.homeScreen_hey_soy_marc)
                       .tr(),
                   style: const TextStyle(
@@ -116,8 +120,8 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
                 const SizedBox(height: 6),
-                RichText(
-                  text: TextSpan(
+                SelectableText.rich(
+                  TextSpan(
                     children: [
                       TextSpan(
                         text:
@@ -149,15 +153,7 @@ class _HomescreenState extends State<Homescreen> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {
-                        showDialog(
-  context: context,
-  builder: (_) => const Dialog(
-    backgroundColor: Colors.transparent,
-    insetPadding: EdgeInsets.all(20),
-    child: PresentationDialog(),
-  ),
-);
-
+                        showPresentationCard(context);
                       },
                       icon: const Icon(FontAwesomeIcons.solidAddressCard),
                       label: Text(StringTranslateExtension(
@@ -204,6 +200,29 @@ class _HomescreenState extends State<Homescreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void showPresentationCard(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final screenWidth = MediaQuery.of(context).size.width;
+        final screenHeight = MediaQuery.of(context).size.height;
+
+        // Padding dinámico: menor en pantallas pequeñas, mayor en grandes
+        final horizontalPadding = screenWidth * 0.2; // 10% a cada lado
+        final verticalPadding = screenHeight * 0.11; // 10% arriba y abajo
+
+        return Dialog(
+          insetPadding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
+          backgroundColor: Colors.transparent,
+          child: PresentationDialog(),
+        );
+      },
     );
   }
 }
@@ -270,7 +289,8 @@ class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Marc Rovira', style: Theme.of(context).textTheme.titleLarge),
+          SelectableText('Marc Rovira',
+              style: Theme.of(context).textTheme.titleLarge),
           PopupMenuButton<int>(
             onSelected: widget.onTap,
             itemBuilder: (context) => [

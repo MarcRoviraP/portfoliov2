@@ -27,7 +27,7 @@ class _AboutmeState extends State<Aboutme> {
                   Icon(FontAwesomeIcons.userAstronaut,
                       color: Colors.yellow, size: 28),
                   const SizedBox(width: 8),
-                  Text(
+                  SelectableText(
                     LocaleKeys.homeScreen_about_me.tr(),
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold),
@@ -44,13 +44,13 @@ class _AboutmeState extends State<Aboutme> {
                     flex: 2,
                     child: Column(
                       children: [
-                        Text(
+                        SelectableText(
                           LocaleKeys.AboutMe_about_me_text.tr(),
                           style: const TextStyle(fontSize: 16, height: 1.5),
                           textAlign: TextAlign.justify,
                         ),
                         const SizedBox(height: 20),
-                        Text(
+                        SelectableText(
                           LocaleKeys.AboutMe_about_me_text2.tr(),
                           style: const TextStyle(fontSize: 16, height: 1.5),
                           textAlign: TextAlign.justify,

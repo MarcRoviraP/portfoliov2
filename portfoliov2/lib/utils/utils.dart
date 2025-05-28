@@ -18,7 +18,8 @@ class ThemeControllerC extends GetxController {
     Get.changeTheme(
       isDarkMode.value
           ? ThemeData.from(colorScheme: MaterialTheme.darkScheme())
-          : ThemeData.from(colorScheme: MaterialTheme.lightScheme()),
+          : ThemeData.from(
+              colorScheme: MaterialTheme.lightScheme()),
     );
   }
 }
