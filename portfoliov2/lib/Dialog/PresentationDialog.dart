@@ -45,12 +45,12 @@ class _PresentationDialogState extends State<PresentationDialog> {
               Align(
                 alignment: Alignment.centerRight,
                 child: SizedBox(
-                  width: containerWidth * 0.6, // Ancho del contenedor de texto
+                  width: containerWidth * 0.7, // Ancho del contenedor de texto
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 24.0, horizontal: 8.0),
+                          vertical: 14.0, horizontal: 8.0),
                       decoration: BoxDecoration(
                         color: Theme.of(context)
                             .colorScheme
@@ -72,36 +72,46 @@ class _PresentationDialogState extends State<PresentationDialog> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Marc Rovira Perelló",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: containerWidth * 0.05,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: containerWidth * 0.01),
                           Text(
                             LocaleKeys.PresentationDialog_dam.tr(),
-                            style: const TextStyle(
-                              fontSize: 16,
+                            style: TextStyle(
+                              fontSize: containerWidth * 0.04,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: containerWidth * 0.01),
                           TextButton.icon(
                             onPressed: () {
                               _launchPhone();
                             },
-                            icon: const Icon(Icons.phone, size: 20),
-                            label:
-                                Text(LocaleKeys.PresentationDialog_phone.tr()),
+                            icon:
+                                Icon(Icons.phone, size: containerWidth * 0.03),
+                            label: Text(
+                              LocaleKeys.PresentationDialog_phone.tr(),
+                              style: TextStyle(
+                                fontSize: containerWidth * 0.03,
+                              ),
+                            ),
                           ),
                           TextButton.icon(
                             onPressed: () {
                               _launchEmail();
                             },
-                            icon: const Icon(Icons.mail_outline, size: 20),
-                            label:
-                                Text(LocaleKeys.PresentationDialog_mail.tr()),
+                            icon: Icon(Icons.mail_outline,
+                                size: containerWidth * 0.03),
+                            label: Text(
+                              LocaleKeys.PresentationDialog_mail.tr(),
+                              style: TextStyle(
+                                fontSize: containerWidth * 0.03,
+                              ),
+                            ),
                           ),
                         ],
                       ),
