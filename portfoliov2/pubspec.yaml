@@ -10,6 +10,7 @@ dependencies:
   easy_localization: ^3.0.7+1
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.4
   font_awesome_flutter: ^10.8.0
   get: ^4.7.2
   provider: ^6.1.5
@@ -31,4 +32,11 @@ flutter:
     - assets/data/
     - assets/img/
 
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/me.png"
+  web:
+    generate: true
+    image_path: "assets/img/me.png"
+    
