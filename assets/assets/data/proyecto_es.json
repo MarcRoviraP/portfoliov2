@@ -42,5 +42,12 @@
       "descripcion": "Aplicación móvil de gestión de negocios. Hecho con Dart y Flutter. Utiliza Supabase como backend y almacenamiento de datos.",
       "link": "https://github.com/MarcRoviraP/MyBusiness"
     }
+    ,
+    {
+      "imagen": "camara_ai.png",
+      "titulo": "Camara AI",
+      "descripcion": "Aplicación móvil de cámara con inteligencia artificial. Hecho con Dart y Flutter. Utiliza la API de Gemini para el reconocimiento de imágenes y texto. Para con distintos prompts mostrar diferentes resultados.",
+      "link": "https://github.com/MarcRoviraP/camara_ai"
+    }
   ]
 }
